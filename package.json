@@ -10,6 +10,7 @@
   "author": "qmw",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.5.0",
     "typescript": "^5.0.4"
   }
 }
