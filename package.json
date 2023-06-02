@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "publish": "publish"
   },
   "author": "qmw",
   "license": "ISC",

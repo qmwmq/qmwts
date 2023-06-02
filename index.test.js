@@ -1,4 +1,6 @@
 const { NumberUtils } = require('./index')
-test('asd', () => {
-    expect(NumberUtils.isNumber('fdsf')).toBe(false)
+test('isNumber', () => {
+    const a = 'fdsf'
+    expect(NumberUtils.isNumber(a)).toBe(false)
+    console.log(a)
 })
