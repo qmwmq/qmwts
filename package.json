@@ -10,9 +10,6 @@
   "author": "qmw",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.22.1",
-    "@babel/preset-env": "^7.22.4",
-    "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "ts-jest": "^29.1.0",
     "typescript": "^5.1.3"

@@ -4,3 +4,4 @@ import NumberUtils from './src/utils/number-utils'
 export {
     NumberUtils
 }
+
