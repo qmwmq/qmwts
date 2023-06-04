@@ -13,9 +13,14 @@ test('isNumber', () => {
     expect(NumberUtils.ifNaN('123a', 1)).toBe(1)
     expect(NumberUtils.ifNaN('123a', 1)).toBe(1)
 
-    expect(JsonUtils.isObject("{}")).toBe(true)
-    expect(JsonUtils.isObject("{1}")).toBe(false)
-    expect(JsonUtils.isObject("{1:1}")).toBe(false)
-    expect(JsonUtils.isObject("{'1':1}")).toBe(false)
-    expect(JsonUtils.isObject("{\"1\":1}")).toBe(true)
+    expect(JsonUtils.toJSONArray("{\"1\":1}")).toStrictEqual([])
+    expect(JsonUtils.toJSONArray(123)).toStrictEqual([])
+    expect(JsonUtils.toJSONArray([1, 2, 3])).toStrictEqual([1, 2, 3])
+    expect(JsonUtils.toJSONArray('[3,2,1]')).toStrictEqual([3, 2, 1])
+
+    expect(JsonUtils.toJSONObject([3, 2, 1])).toStrictEqual({})
+    expect(JsonUtils.toJSONObject({ a: 1, b: 2 })).toStrictEqual({ b: 2, a: 1 })
+    expect(JsonUtils.toJSONObject('{ "a": 1, "b": 2 }')).toStrictEqual({ b: 2, a: 1 })
+    expect(JsonUtils.toJSONObject('{ "a": 1, "b": 2, }')).toStrictEqual({})
+
 })
