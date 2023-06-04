@@ -23,4 +23,9 @@ test('isNumber', () => {
     expect(JsonUtils.toJSONObject('{ "a": 1, "b": 2 }')).toStrictEqual({ b: 2, a: 1 })
     expect(JsonUtils.toJSONObject('{ "a": 1, "b": 2, }')).toStrictEqual({})
 
+    expect(JsonUtils.optionalChaining({a:1}, 'a')).toBe(1)
+    expect(JsonUtils.optionalChaining([1,2,3], '0')).toBe(1)
+    expect(JsonUtils.optionalChaining([1,2,3], '2')).toBe(3)
+    expect(JsonUtils.optionalChaining({a:{b:{c:'123'}}}, 'a.b.c')).toBe('123')
+
 })

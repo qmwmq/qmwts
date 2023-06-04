@@ -32,5 +32,11 @@ export default {
         if (this.isPrototypeArray(o))
             return o
         return this.isJSONArray(o) ? JSON.parse(o) : []
+    },
+    optionalChaining(o: any = {}, chain: string) {
+        const chaining = chain.split('.')
+        for (const key of chaining)
+            o = o[key] || ''
+        return o
     }
 }
