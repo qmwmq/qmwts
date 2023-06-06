@@ -1,11 +1,10 @@
 {
   "name": "qmwts",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "jest",
-    "publish": "publish"
+    "test": "jest"
   },
   "author": "qmw",
   "license": "ISC",

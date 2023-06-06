@@ -28,4 +28,9 @@ test('isNumber', () => {
     expect(JsonUtils.optionalChaining([1,2,3], '2')).toBe(3)
     expect(JsonUtils.optionalChaining({a:{b:{c:'123'}}}, 'a.b.c')).toBe('123')
 
+    expect(NumberUtils.summation([1,2,3])).toBe(6)
+    expect(NumberUtils.summation([1,'1',3])).toBe(5)
+    expect(NumberUtils.summation([1,'1a',3])).toBe(4)
+    expect(NumberUtils.summation([])).toBe(0)
+
 })

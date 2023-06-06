@@ -18,4 +18,9 @@ export default {
             })
         })
     },
+    summation(array: any[] = []) {
+        return array.reduce((prev, curr) => {
+            return prev + this.ifNaN(curr, 0)
+        }, 0)
+    }
 }
