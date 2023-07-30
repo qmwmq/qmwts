@@ -25,13 +25,13 @@ export default {
     },
     toJSONObject<T>(o: any): T {
         if (this.isPrototypeObject(o))
-            return o
-        return this.isJSONObject(o) ? JSON.parse(o) : {}
+            return <T>o
+        return this.isJSONObject(o) ? <T>JSON.parse(o) : <T>{}
     },
     toJSONArray<T>(o: any): T[] {
         if (this.isPrototypeArray(o))
-            return o
-        return this.isJSONArray(o) ? JSON.parse(o) : []
+            return <T[]>o
+        return this.isJSONArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
     },
     optionalChaining(o: any = {}, chain: string): any {
         const chaining = chain.split('.')
