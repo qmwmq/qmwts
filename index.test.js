@@ -1,4 +1,4 @@
-const { NumberUtils, JsonUtils, UUIDUtils } = require('./index')
+const { NumberUtils, JsonUtils, UUIDUtils } = require('./src/index')
 test('isNumber', () => {
   expect(NumberUtils.thousandths(1)).toBe('1.00')
   expect(JsonUtils.toJSONArray("{\"1\":1}")).toStrictEqual([])
