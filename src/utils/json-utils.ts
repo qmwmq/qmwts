@@ -5,7 +5,7 @@ export default {
   isPrototypeArray(o: any): boolean {
     return Object.prototype.toString.call(o) === '[object Array]'
   },
-  isJSONObject(o: any): boolean {
+  isObject(o: any): boolean {
     if (this.isPrototypeObject(o))
       return true
     try {
@@ -14,7 +14,7 @@ export default {
       return false
     }
   },
-  isJSONArray(o: any): boolean {
+  isArray(o: any): boolean {
     if (this.isPrototypeArray(o))
       return true
     try {
@@ -23,15 +23,15 @@ export default {
       return false
     }
   },
-  toJSONObject<T>(o: any): T {
+  parseObject<T>(o: any): T {
     if (this.isPrototypeObject(o))
       return <T>o
-    return this.isJSONObject(o) ? <T>JSON.parse(o) : <T>{}
+    return this.isObject(o) ? <T>JSON.parse(o) : <T>{}
   },
-  toJSONArray<T>(o: any): T[] {
+  parseArray<T>(o: any): T[] {
     if (this.isPrototypeArray(o))
       return <T[]>o
-    return this.isJSONArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
+    return this.isArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
   },
   optionalChaining(o: any = {}, chain: string): any {
     const chaining = chain.split('.')
