@@ -33,10 +33,10 @@ export default {
       return <T[]>o
     return this.isArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
   },
-  optionalChaining(o: any = {}, chain: string): any {
+  optionalChaining(o: any = {}, chain: string, substitute: any = ''): any {
     const chaining = chain.split('.')
     for (const key of chaining)
       o = o[key] || ''
-    return o
+    return o || substitute
   }
 }
