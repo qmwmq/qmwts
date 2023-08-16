@@ -1,35 +1,31 @@
+import PrototypeUtils from './prototype-utils'
+
 export default {
-  isPrototypeObject(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Object]'
-  },
-  isPrototypeArray(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Array]'
-  },
   isObject(o: any): boolean {
-    if (this.isPrototypeObject(o))
+    if (PrototypeUtils.isObject(o))
       return true
     try {
-      return this.isPrototypeObject(JSON.parse(o))
+      return PrototypeUtils.isObject(JSON.parse(o))
     } catch (e) {
       return false
     }
   },
   isArray(o: any): boolean {
-    if (this.isPrototypeArray(o))
+    if (PrototypeUtils.isArray(o))
       return true
     try {
-      return this.isPrototypeArray(JSON.parse(o))
+      return PrototypeUtils.isArray(JSON.parse(o))
     } catch (e) {
       return false
     }
   },
   parseObject<T>(o: any): T {
-    if (this.isPrototypeObject(o))
+    if (PrototypeUtils.isObject(o))
       return <T>o
     return this.isObject(o) ? <T>JSON.parse(o) : <T>{}
   },
   parseArray<T>(o: any): T[] {
-    if (this.isPrototypeArray(o))
+    if (PrototypeUtils.isArray(o))
       return <T[]>o
     return this.isArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
   },
