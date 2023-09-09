@@ -2,10 +2,12 @@
 import NumberUtils from './utils/number-utils'
 import JsonUtils from './utils/json-utils'
 import UUIDUtils from './utils/uuid-utils'
+import PrototypeUtils from './utils/prototype-utils'
 
 export {
   NumberUtils,
   JsonUtils,
-  UUIDUtils
+  UUIDUtils,
+  PrototypeUtils
 }
 
