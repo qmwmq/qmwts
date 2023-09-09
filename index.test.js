@@ -6,4 +6,5 @@ test('isNumber', () => {
   console.log(UUIDUtils.uuid())
   console.log(UUIDUtils.uuid())
   console.log(UUIDUtils.uuid())
+  console.log(Array.isArray('[]'))
 })
