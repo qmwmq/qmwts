@@ -3,9 +3,11 @@ export default {
   ifNaN(number: any, substitute: any): any {
     return this.isNumber(number) ? +number : substitute
   },
-  isNumber(number: any): boolean {
-    number = String(number).trim()
-    return number !== '' && isFinite(+number) && !isNaN(+number)
+  isNumber(...number: any[]): boolean {
+    return number.every(e => {
+      e = String(e).trim()
+      return e !== '' && isFinite(+e) && !isNaN(+e)
+    })
   },
   // 增加千分位分隔符
   thousandths(number: any, fixed: number = 2): string {
