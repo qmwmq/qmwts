@@ -19,6 +19,7 @@ export default {
         return y + ','
       })
     })
+    // new Intl.NumberFormat('en-US').format(123456)
   },
   summation(array: any[] = []): number {
     return array.reduce((prev, curr) => {
