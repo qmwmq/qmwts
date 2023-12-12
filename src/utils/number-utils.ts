@@ -6,24 +6,19 @@ export default {
   isNumber(...number: any[]): boolean {
     return number.every(e => {
       e = String(e).trim()
-      return e !== '' && isFinite(+e) && !isNaN(+e)
+      return e !== '' && isFinite(e) && !isNaN(e)
     })
   },
   // 增加千分位分隔符
   thousandths(number: any, fixed: number = 2): string {
     if (!this.isNumber(number))
       return ''
-    number = (+number).toFixed(fixed)
-    return number.replace(/\d+/, (x: string) => {
-      return x.replace(/(\d)(?=(\d{3})+$)/g, (y: string) => {
-        return y + ','
-      })
-    })
-    // new Intl.NumberFormat('en-US').format(123456)
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: fixed,
+      maximumFractionDigits: fixed,
+    }).format(number)
   },
   summation(array: any[] = []): number {
-    return array.reduce((prev, curr) => {
-      return prev + this.ifNaN(curr, 0)
-    }, 0)
+    return array.reduce((prev, curr) => prev + this.ifNaN(curr, 0), 0)
   }
 }
