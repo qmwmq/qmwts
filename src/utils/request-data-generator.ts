@@ -1,20 +1,23 @@
 import PrototypeUtils from './prototype-utils'
 
 export default {
-  generateFormData(params: any = {}): FormData {
-    const data = new FormData()
-    for (const [ key, value ] of Object.entries(params)) {
-      if (PrototypeUtils.isArray(value)) // 数组循环append
-        for (const i of <Array<string>>value)
-          data.append(key, i)
-      else if (isValidValue(value))
-        data.append(key, <string>value)
-    }
-    return data
+  generateFormData(data: any = {}): FormData {
+    return <FormData>generate(data, new FormData())
   },
-  generateURLSearchParams(params: any = {}): URLSearchParams {
-    return new URLSearchParams()
+  generateURLSearchParams(data: any = {}): URLSearchParams {
+    return <URLSearchParams>generate(data, new URLSearchParams())
   },
+}
+
+function generate(data: any = {}, params: FormData | URLSearchParams) {
+  for (const [ key, value ] of Object.entries(data)) {
+    if (PrototypeUtils.isArray(value))
+      for (const i of <Array<any>>value)
+        params.append(key, i)
+    else if (isValidValue(value))
+      params.append(key, <any>value)
+  }
+  return params
 }
 
 function isValidValue(value: any) {
