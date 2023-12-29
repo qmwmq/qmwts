@@ -1,4 +1,4 @@
-const { NumberUtils, JsonUtils, UUIDUtils } = require('./src/index')
+const { NumberUtils, JsonUtils, UUIDUtils, RequestDataGenerator } = require('./src/index')
 // 测试isNumber方法
 test('isNumber', () => {
   // 一般数字
@@ -52,4 +52,11 @@ test('thousandths', () => {
   expect(NumberUtils.thousandths(123456.0)).toBe('123,456.00')
   expect(NumberUtils.thousandths('123456.0')).toBe('123,456.00')
   expect(NumberUtils.thousandths(123456.0, 0)).toBe('123,456')
+})
+
+test('formData', () => {
+  const a = RequestDataGenerator.generateFormData({ a: 1 })
+  const b = RequestDataGenerator.generateURLSearchParams({ a: 1 })
+  console.log(a)
+  console.log(b)
 })
