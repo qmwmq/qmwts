@@ -55,8 +55,4 @@ test('thousandths', () => {
 })
 
 test('formData', () => {
-  const a = RequestDataGenerator.generateFormData({ a: 1 })
-  const b = RequestDataGenerator.generateURLSearchParams({ a: 1 })
-  console.log(a)
-  console.log(b)
 })
