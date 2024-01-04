@@ -4,6 +4,7 @@ import JsonUtils from './utils/json-utils'
 import UUIDUtils from './utils/uuid-utils'
 import PrototypeUtils from './utils/prototype-utils'
 import RequestDataGenerator from './utils/request-data-generator'
+import FileUtils from './utils/file-utils'
 
 export {
   NumberUtils,
@@ -11,5 +12,6 @@ export {
   UUIDUtils,
   PrototypeUtils,
   RequestDataGenerator,
+  FileUtils,
 }
 

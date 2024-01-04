@@ -1,4 +1,9 @@
-const { NumberUtils, JsonUtils, UUIDUtils, RequestDataGenerator } = require('./src/index')
+const { NumberUtils, JsonUtils, UUIDUtils, RequestDataGenerator, FileUtils } = require('./src/index')
+
+test('FileUtils', () => {
+  console.log(FileUtils.formatSize(1099511627776*1025))
+})
+
 // 测试isNumber方法
 test('isNumber', () => {
   // 一般数字
