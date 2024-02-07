@@ -35,11 +35,10 @@ export default {
       o = o[key] || ''
     return o || substitute
   },
-  // 返回一个值被全部设为null的object，主要用于naive-ui
-  setNull(o: any = {}, exclusions: any = []): any {
+  // 将一个object的值全部设为null，主要用于naive-ui
+  setNull(o: any = {}, exclusions: any = []): void {
     for (const key in o)
       if (!exclusions.includes(key))
         o[key] = null
-    return o
   }
 }
