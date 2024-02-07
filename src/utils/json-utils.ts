@@ -34,5 +34,12 @@ export default {
     for (const key of chaining)
       o = o[key] || ''
     return o || substitute
+  },
+  // 返回一个值被全部设为null的object，主要用于naive-ui
+  setNull(o: any = {}, exclusions: any = []): any {
+    for (const key in o)
+      if (!exclusions.includes(key))
+        o[key] = null
+    return o
   }
 }
