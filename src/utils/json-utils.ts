@@ -30,10 +30,17 @@ export default {
     return this.isArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
   },
   optionalChaining(o: any = {}, chain: string, substitute: any = ''): any {
-    const chaining = chain.split('.')
-    for (const key of chaining)
-      o = o[key] || ''
-    return o || substitute
+    const chaining: string[] = chain.split('.')
+    for (const key of chaining) {
+      try {
+        o = o[key]
+      } catch (e) {
+        o = ''
+      }
+    }
+    if (o === void 0 || o === null)
+      return substitute
+    return o
   },
   // 将一个object的值全部设为null，主要用于naive-ui
   setNull(o: any = {}, exclusions: any = []): void {
