@@ -8,5 +8,11 @@ export default {
       s = s / 1024
     }
     return s.toFixed(1) + units[index]
+  },
+  fileType(url: string): string {
+    const s = String(url)
+    if (!s.includes('.'))
+      return ''
+    return s.substring(s.lastIndexOf('.') + 1, s.length)
   }
 }

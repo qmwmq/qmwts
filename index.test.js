@@ -6,6 +6,7 @@ test('FileUtils', () => {
 
 // 测试isNumber方法
 test('isNumber', () => {
+
   // 一般数字
   expect(NumberUtils.isNumber(1)).toBe(true)
   expect(NumberUtils.isNumber(1.0)).toBe(true)
