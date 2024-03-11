@@ -1,9 +1,18 @@
-const { NumberUtils, JsonUtils, UUIDUtils, RequestDataGenerator, FileUtils, DateUtils } = require('./src/index')
+const {
+  NumberUtils,
+  LocalDate,
+  JsonUtils,
+  UUIDUtils,
+  RequestDataGenerator,
+  FileUtils,
+  DateUtils
+} = require('./src/index')
 
 test('DateUtils', () => {
-  console.log(new Date())
-  console.log(new Date().setDate(1))
-  console.log(new Date().setHours(0,0,0,0))
+
+  const date = new LocalDate()
+  console.log(date.toString())
+
 })
 
 test('FileUtils', () => {
