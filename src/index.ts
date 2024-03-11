@@ -6,6 +6,7 @@ import UUIDUtils from './utils/uuid-utils'
 import PrototypeUtils from './utils/prototype-utils'
 import RequestDataGenerator from './utils/request-data-generator'
 import FileUtils from './utils/file-utils'
+import DateUtils from './utils/date-utils'
 
 export {
   Downloader,
@@ -15,5 +16,6 @@ export {
   PrototypeUtils,
   RequestDataGenerator,
   FileUtils,
+  DateUtils,
 }
 

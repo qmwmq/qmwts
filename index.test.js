@@ -1,7 +1,13 @@
-const { NumberUtils, JsonUtils, UUIDUtils, RequestDataGenerator, FileUtils } = require('./src/index')
+const { NumberUtils, JsonUtils, UUIDUtils, RequestDataGenerator, FileUtils, DateUtils } = require('./src/index')
+
+test('DateUtils', () => {
+  console.log(new Date())
+  console.log(new Date().setDate(1))
+  console.log(new Date().setHours(0,0,0,0))
+})
 
 test('FileUtils', () => {
-  console.log(FileUtils.formatSize(1099511627776*1025))
+  console.log(FileUtils.formatSize(1099511627776 * 1025))
 })
 
 // 测试isNumber方法
