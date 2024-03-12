@@ -1,6 +1,7 @@
 const {
   NumberUtils,
   LocalDate,
+  YearMonth,
   JsonUtils,
   UUIDUtils,
   RequestDataGenerator,
@@ -11,7 +12,8 @@ const {
 test('DateUtils', () => {
 
   console.log(
-      LocalDate.of(2022,2,2)
+      LocalDate.of(2022, 2, 2).toString(),
+      YearMonth.now().toString()
   )
 
 })

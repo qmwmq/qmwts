@@ -9,6 +9,7 @@ import FileUtils from './utils/file-utils'
 import DateUtils from './utils/date-utils'
 import LocalDate from './class/local-date'
 import LocalDateTime from './class/local-date-time'
+import YearMonth from './class/year-month'
 
 export {
   Downloader,
@@ -21,5 +22,6 @@ export {
   DateUtils,
   LocalDate,
   LocalDateTime,
+  YearMonth,
 }
 
