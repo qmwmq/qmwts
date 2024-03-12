@@ -10,8 +10,9 @@ const {
 
 test('DateUtils', () => {
 
-  const date = new LocalDate()
-  console.log(date.toString())
+  console.log(
+      LocalDate.of(2022,2,2)
+  )
 
 })
 
