@@ -8,6 +8,7 @@ export default {
       alert('您的浏览器不支持fetch')
       return
     }
+    urls = [ urls ].flat(Infinity)
 
     const zip = new JSZip()
     let index = 1
