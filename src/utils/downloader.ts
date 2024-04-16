@@ -3,7 +3,7 @@ import FileUtils from './file-utils'
 
 export default {
   async zip(urls: Array<any>) {
-    const { fetch } = window
+    const { fetch, URL } = window
     if (!fetch) {
       alert('您的浏览器不支持fetch')
       return
@@ -18,12 +18,11 @@ export default {
       zip.file([ index++, FileUtils.fileType(url) ].filter(e => !!e).join('.'), blob)
     }
     zip.generateAsync({ type: 'blob' }).then(blob => {
-      const { URL } = window
-      const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
-      a.href = url
+      a.href = URL.createObjectURL(blob)
       a.click()
-      URL.revokeObjectURL(url)
+      URL.revokeObjectURL(a.href)
+      a.remove()
     })
   }
 }
