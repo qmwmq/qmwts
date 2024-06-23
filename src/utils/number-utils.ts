@@ -13,6 +13,8 @@ export default {
   thousandths(number: any, fixed: number = 2): string {
     if (!this.isNumber(number))
       return ''
+    if (Object.is(+number, -0))
+      number = 0
     return new Intl.NumberFormat('en-US', {
       minimumFractionDigits: fixed,
       maximumFractionDigits: fixed,
