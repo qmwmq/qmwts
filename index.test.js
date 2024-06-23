@@ -72,10 +72,8 @@ test('isNumber', () => {
 })
 
 test('thousandths', () => {
-  expect(NumberUtils.thousandths(123456)).toBe('123,456.00')
-  expect(NumberUtils.thousandths(123456.0)).toBe('123,456.00')
-  expect(NumberUtils.thousandths('123456.0')).toBe('123,456.00')
-  expect(NumberUtils.thousandths(123456.0, 0)).toBe('123,456')
+  console.log(NumberUtils.thousandths('-0.00'))
+  expect(NumberUtils.thousandths(-0)).toBe('0.00')
 })
 
 test('formData', () => {

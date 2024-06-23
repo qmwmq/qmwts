@@ -11,15 +11,16 @@ export default {
   },
   // 增加千分位分隔符
   thousandths(number: any, fixed: number = 2): string {
-    if (!this.isNumber(number))
-      return ''
-    number = new Intl.NumberFormat('en-US', {
-      minimumFractionDigits: fixed,
-      maximumFractionDigits: fixed,
-    }).format(number)
-    if (Object.is(+number, -0)) // -0转为普通0
-      return (0).toFixed(fixed)
-    return number
+    return 'aaa'
+    // if (!this.isNumber(number))
+    //   return ''
+    // number = new Intl.NumberFormat('en-US', {
+    //   minimumFractionDigits: fixed,
+    //   maximumFractionDigits: fixed,
+    // }).format(number)
+    // if (+number === 0)// -0转为普通0
+    //   return (0).toFixed(fixed)
+    // return number
   },
   summation(array: any[] = []): number {
     return array.reduce((prev, curr) => prev + this.ifNaN(curr, 0), 0)
