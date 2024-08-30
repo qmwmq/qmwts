@@ -38,7 +38,7 @@ export default {
         o = ''
       }
     }
-    if (o === void 0 || o === null)
+    if ([ void 0, null ].includes(o))
       return substitute
     return o
   },
