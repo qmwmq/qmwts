@@ -1,4 +1,5 @@
 // https://www.jianshu.com/p/8fa2c50720e4
+import ArrayUtils from './utils/array-utils'
 import Downloader from './utils/downloader'
 import NumberUtils from './utils/number-utils'
 import JsonUtils from './utils/json-utils'
@@ -12,6 +13,7 @@ import LocalDateTime from './class/local-date-time'
 import YearMonth from './class/year-month'
 
 export {
+  ArrayUtils,
   Downloader,
   NumberUtils,
   JsonUtils,
