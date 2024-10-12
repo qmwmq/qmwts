@@ -6,7 +6,7 @@ export default {
    * @param parentKey 关联上级字段
    * @param childrenKey 下级字段
    */
-  listToTree<T>(
+  arrayToTree<T>(
       array: any[] = [],
       idKey: string = 'id',
       parentKey: string = 'parentId',

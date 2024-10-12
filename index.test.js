@@ -90,7 +90,7 @@ test('formData', () => {
     { "id": 9, "parentId": 6, "name": "房", },
   ]
 
-  const b = ArrayUtils.listToTree(a)
+  const b = ArrayUtils.arrayToTree(a)
   console.log(JSON.stringify(b, null, 4))
   console.log(JSON.stringify(a, null, 4))
 
