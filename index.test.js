@@ -6,7 +6,8 @@ const {
   UUIDUtils,
   RequestDataGenerator,
   FileUtils,
-  DateUtils
+  DateUtils,
+  ArrayUtils
 } = require('./src/index')
 
 test('DateUtils', () => {
@@ -77,4 +78,20 @@ test('thousandths', () => {
 })
 
 test('formData', () => {
+  const a = [
+    { "id": 1, "parentId": 0, "name": "首页", },
+    { "id": 2, "parentId": 0, "name": "记账管理", },
+    { "id": 3, "parentId": 1, "name": "收入", },
+    { "id": 4, "parentId": 1, "name": "支出", },
+    { "id": 5, "parentId": 1, "name": "统计", },
+    { "id": 6, "parentId": 1, "name": "分类设置", },
+    { "id": 7, "parentId": 0, "name": "看房工具", },
+    { "id": 8, "parentId": 6, "name": "小区", },
+    { "id": 9, "parentId": 6, "name": "房", },
+  ]
+
+  const b = ArrayUtils.listToTree(a)
+  console.log(JSON.stringify(b, null, 4))
+  console.log(JSON.stringify(a, null, 4))
+
 })
