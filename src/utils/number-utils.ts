@@ -24,7 +24,4 @@ export default {
   summation(array: any[] = []): number {
     return array.reduce((prev, curr) => prev + this.ifNaN(curr, 0), 0)
   },
-  leftPadZero(num: number, pad: number): string {
-    return ('0' + num).slice(-pad)
-  }
 }

@@ -1,36 +1,30 @@
-import NumberUtils from '../utils/number-utils'
-import PrototypeUtils from '../utils/prototype-utils'
-
 // https://juejin.cn/post/7098891689955164168
 export default class LocalDate {
 
-  private date: Date
+  private readonly date!: Date
 
-  constructor(...args: any[]) {
-    this.date = new Date()
-    if (NumberUtils.isNumber(args[0]))
-      this.date.setFullYear(+args[0])
-    if (NumberUtils.isNumber(args[1]))
-      this.date.setMonth(+args[1] - 1)
-    if (NumberUtils.isNumber(args[2]))
-      this.date.setDate(args[2])
-    if (PrototypeUtils.isDate(args[0]))
-      this.date = args[0]
+  constructor()
+  constructor(date: Date)
+  constructor(date?: Date) {
+    if (date == void 0)
+      this.date = new Date()
+    else
+      this.date = date
   }
 
-  static now = (): LocalDate => {
+  static now() {
     return new LocalDate()
   }
 
-  static of = (year: any, month: any, date: any): LocalDate => {
-    return new LocalDate(year, month, date)
+  static of(year: number, month: number, date: number) {
+    return new LocalDate(new Date(year, month - 1, date))
   }
 
-  toString = (): string => {
+  toString() {
     return [
-      this.date.getFullYear(),
-      NumberUtils.leftPadZero(this.date.getMonth() + 1, 2),
-      NumberUtils.leftPadZero(this.date.getDate(), 2)
+      this.date.getFullYear().toString(),
+      (this.date.getMonth() + 1).toString().padStart(2, '0'),
+      this.date.getDate().toString().padStart(2, '0')
     ].join('-')
   }
 

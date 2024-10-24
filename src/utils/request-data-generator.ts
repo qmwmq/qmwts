@@ -4,10 +4,10 @@ export default {
   generate(data: any = {}, params: FormData | URLSearchParams) {
     for (const [ key, value ] of Object.entries(data)) {
       if (PrototypeUtils.isArray(value))
-        for (const i of <Array<any>>value)
+        for (const i of value as any[])
           params.append(key, i)
       else if (isValidValue(value))
-        params.append(key, <any>value)
+        params.append(key, value as string)
     }
     return params
   }

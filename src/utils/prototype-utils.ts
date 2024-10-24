@@ -1,26 +1,30 @@
 export default {
+  is(o: any, type: string): boolean {
+    return Object.prototype.toString.call(o) === `[object ${ type }]`
+  },
   isObject(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Object]'
+    return this.is(o, 'Object')
   },
   isArray(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Array]'
+    return this.is(o, 'Array')
   },
   isFile(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object File]'
+    return this.is(o, 'File')
   },
   isNumber(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Number]'
+    return this.is(o, 'Number')
   },
   isDate(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Date]'
+    return this.is(o, 'Date')
   },
   isFunction(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Function]'
+    return this.is(o, 'Function')
   },
   isBoolean(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object Boolean]'
+    return this.is(o, 'Boolean')
   },
   isString(o: any): boolean {
-    return Object.prototype.toString.call(o) === '[object String]'
+    return this.is(o, 'String')
   },
 }
+
