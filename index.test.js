@@ -7,15 +7,34 @@ const {
   RequestDataGenerator,
   FileUtils,
   DateUtils,
-  ArrayUtils
+  ArrayUtils,
+  CurrencyUtils,
 } = require('./src/index')
 
 test('DateUtils', () => {
 
-  console.log(
-      LocalDate.of(2022, 2, 2).toString(),
-      YearMonth.now().toString()
-  )
+  const a = [
+    { date: new Date(2021, 1, 1), amount: 0 },
+    { date: new Date(2020, 1, 1), amount: 0 },
+    { date: new Date(2023, 1, 1), amount: 0 },
+    { date: new Date(1899, 1, 1), amount: 0 },
+  ]
+
+  CurrencyUtils.XIRR(a)
+
+  console.log(a)
+
+  // const rate = 0.0812
+  // const P0 = -212856
+  // const P1 = 213723
+  //
+  // console.log(P0 / Math.pow(1 + rate, 0 / 365))
+  // console.log(P1 / Math.pow(1 + rate, 19 / 365))
+
+  // console.log(
+  //     LocalDate.of(2022, 2, 2).toString(),
+  //     YearMonth.now().toString()
+  // )
 
 })
 
