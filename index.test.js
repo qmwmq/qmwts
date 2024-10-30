@@ -14,15 +14,13 @@ const {
 test('DateUtils', () => {
 
   const a = [
-    { date: new Date(2021, 0, 1), amount: -1000 },
-    // { date: new Date(2021, 6, 1), amount: -500 },
+    { date: new Date(2021, 0, 1), amount: -500 },
+    { date: new Date(2021, 6, 1), amount: -500 },
     { date: new Date(2022, 0, 1), amount: 1100 },
   ]
 
-  // FinanceUtils.XIRR(a)
-
-  const r = FinanceUtils.xirr(a.map(e => e.amount), a.map(e => e.date.getTime()))
-  console.log((+r).toFixed(6))
+  const r = FinanceUtils.XIRR(a)
+  console.log((+r).toFixed(9))
 
   // -1000/(1+x)^(0/365) + 1100/(1+x)^(365/365) = 0
   // 1100/(1+x)=1000
