@@ -1,7 +1,7 @@
 // https://www.jianshu.com/p/8fa2c50720e4
 export { default as ArrayUtils } from './utils/array-utils'
-export { default as CurrencyUtils } from './utils/currency-utils'
-export type { XIRREntity } from './utils/currency-utils'
+export { default as FinanceUtils } from './utils/finance-utils'
+export type { XIRREntity } from './utils/finance-utils'
 import Downloader from './utils/downloader'
 import NumberUtils from './utils/number-utils'
 import JsonUtils from './utils/json-utils'

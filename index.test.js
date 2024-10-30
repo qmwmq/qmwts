@@ -8,21 +8,29 @@ const {
   FileUtils,
   DateUtils,
   ArrayUtils,
-  CurrencyUtils,
+  FinanceUtils,
 } = require('./src/index')
 
 test('DateUtils', () => {
 
   const a = [
-    { date: new Date(2021, 1, 1), amount: 0 },
-    { date: new Date(2020, 1, 1), amount: 0 },
-    { date: new Date(2023, 1, 1), amount: 0 },
-    { date: new Date(1899, 1, 1), amount: 0 },
+    { date: new Date(2021, 0, 1), amount: -1000 },
+    // { date: new Date(2021, 6, 1), amount: -500 },
+    { date: new Date(2022, 0, 1), amount: 1100 },
   ]
 
-  CurrencyUtils.XIRR(a)
+  // FinanceUtils.XIRR(a)
 
-  console.log(a)
+  const r = FinanceUtils.xirr(a.map(e => e.amount), a.map(e => e.date.getTime()))
+  console.log((+r).toFixed(6))
+
+  // -1000/(1+x)^(0/365) + 1100/(1+x)^(365/365) = 0
+  // 1100/(1+x)=1000
+  // 1100/1000 = 1+x
+  // 1.1=1+x
+  // x=0.1
+
+  // console.log(a)
 
   // const rate = 0.0812
   // const P0 = -212856
