@@ -13,14 +13,9 @@ const {
 
 test('DateUtils', () => {
 
-  const a = [
-    { date: new Date(2021, 0, 1), amount: -500 },
-    { date: new Date(2021, 6, 1), amount: -500 },
-    { date: new Date(2022, 0, 1), amount: 1100 },
-  ]
+  // console.log(new Date().getDate())
+  console.log(LocalDate.of(2024,12,6).minusDays(30).format())
 
-  const r = FinanceUtils.XIRR(a)
-  console.log((+r).toFixed(9))
 
   // -1000/(1+x)^(0/365) + 1100/(1+x)^(365/365) = 0
   // 1100/(1+x)=1000

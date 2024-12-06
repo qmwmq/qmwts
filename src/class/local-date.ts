@@ -12,12 +12,40 @@ export default class LocalDate {
       this.date = date
   }
 
-  static now() {
+  static now(): LocalDate {
     return new LocalDate()
   }
 
-  static of(year: number, month: number, date: number) {
+  static of(year: number, month: number, date: number): LocalDate {
     return new LocalDate(new Date(year, month - 1, date))
+  }
+
+  getYear(): number {
+    return this.date.getFullYear()
+  }
+
+  getMonth(): number {
+    return this.date.getMonth() + 1
+  }
+
+  getDayOfMonth(): number {
+    return this.date.getDate()
+  }
+
+  getDayOfWeek(): number {
+    return this.date.getDay() || 7
+  }
+
+  plusDays(days: number): LocalDate {
+    return LocalDate.of(this.getYear(), this.getMonth(), this.getDayOfMonth() + days)
+  }
+
+  minusDays(days: number): LocalDate {
+    return this.plusDays(-days)
+  }
+
+  format(): string {
+    return this.toString()
   }
 
   toString() {
