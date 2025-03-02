@@ -6,7 +6,7 @@ export default {
    * @param parentKey 关联上级字段
    * @param childrenKey 下级字段
    */
-  arrayToTree<T>(
+  treeify<T>(
       array: any[] = [],
       idKey: string = 'id',
       parentKey: string = 'parentId',
@@ -31,4 +31,5 @@ export default {
     }
     return o
   }
+
 }

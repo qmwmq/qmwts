@@ -13,29 +13,7 @@ const {
 
 test('DateUtils', () => {
 
-  // console.log(new Date().getDate())
-  console.log(LocalDate.of(2024,12,6).minusDays(30).format())
 
-
-  // -1000/(1+x)^(0/365) + 1100/(1+x)^(365/365) = 0
-  // 1100/(1+x)=1000
-  // 1100/1000 = 1+x
-  // 1.1=1+x
-  // x=0.1
-
-  // console.log(a)
-
-  // const rate = 0.0812
-  // const P0 = -212856
-  // const P1 = 213723
-  //
-  // console.log(P0 / Math.pow(1 + rate, 0 / 365))
-  // console.log(P1 / Math.pow(1 + rate, 19 / 365))
-
-  // console.log(
-  //     LocalDate.of(2022, 2, 2).toString(),
-  //     YearMonth.now().toString()
-  // )
 
 })
 
