@@ -11,6 +11,18 @@ const {
   FinanceUtils,
 } = require('./src/index')
 
+function getIPAddress() {
+  const request = new XMLHttpRequest();
+  request.open('GET', 'https://api.ipify.org?format=json', false);
+  request.send();
+
+  return JSON.parse(request.responseText).ip;
+}
+
+test('IpUtils', () => {
+  console.log(getIPAddress())
+})
+
 test('DateUtils', () => {
 
 

@@ -4,10 +4,12 @@ export default {
     return this.isNumber(number) ? +number : substitute
   },
   isNumber(...number: any[]): boolean {
-    return number.every(e => {
-      e = String(e).trim()
-      return e !== '' && isFinite(e) && !isNaN(e)
-    })
+    for (let i = number.length - 1; i >= 0; i--) {
+      const e = String(number[i]).trim()
+      if (e === '' || !isFinite(+e) || isNaN(+e))
+        return false
+    }
+    return true
   },
   // 增加千分位分隔符
   thousandths(number: any, fixed: number = 2): string {
@@ -22,6 +24,12 @@ export default {
     return number
   },
   summation(array: any[] = []): number {
-    return array.reduce((prev, curr) => prev + this.ifNaN(curr, 0), 0)
+    let sum = 0
+    for (let i = array.length - 1; i >= 0; i--) {
+      const e = +array[i]
+      if (this.isNumber(e))
+        sum += e
+    }
+    return sum
   },
 }
