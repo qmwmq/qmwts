@@ -81,12 +81,33 @@ export default {
       for (let i = array.length - 1; i >= 0; i--) {
         const e = array[i], itemId = e[idKey], pid = e[parentKey]
         if (pid === currentId) {
-          result.push(e)
+          result.unshift(e)
           dfs(itemId)
         }
       }
     }
     dfs(id)
     return result
+  },
+  /**
+   * 根据数组中的某一属性去重
+   * @param array
+   * @param keyName
+   * @param onDuplicate key重复是的行为，override=覆盖，ignore=忽略
+   */
+  uniqueBy<T>(
+      array: any[] = [],
+      keyName: any = 'id',
+      onDuplicate: 'override' | 'ignore' = 'ignore',
+  ): T[] {
+    const map = new Map()
+    for (let i = array.length - 1; i >= 0; i--) {
+      const e = array[i]
+      const key = e[keyName]
+      if (onDuplicate === 'ignore' && map.has(key))
+        continue
+      map.set(key, e)
+    }
+    return Array.from(map.values()).reverse();
   }
 }
