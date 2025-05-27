@@ -101,13 +101,14 @@ export default {
       onDuplicate: 'override' | 'ignore' = 'ignore',
   ): T[] {
     const map = new Map()
-    for (let i = array.length - 1; i >= 0; i--) {
+    const length = array.length
+    for (let i = 0; i < length; i++) {
       const e = array[i]
       const key = e[keyName]
       if (onDuplicate === 'ignore' && map.has(key))
         continue
       map.set(key, e)
     }
-    return Array.from(map.values()).reverse();
+    return Array.from(map.values());
   }
 }
