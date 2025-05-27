@@ -14,20 +14,22 @@ export default {
   ): T[] {
     const map = new Map() // 先根据每项的parentId将该项放入Map
     const ids = [] // 记录所有的id，parentId不在这个集合内则说明是最上级
-    for (let i = array.length - 1; i >= 0; i--) {
+    const length = array.length
+    for (let i = 0; i < length; i++) {
       const e = array[i], id = e[idKey], pid = e[parentKey]
       const children = map.get(pid) || []
-      children.unshift({ ...e })
+      children.push(e)
       map.set(pid, children)
       ids.push(id)
     }
     const o = []
     const values = Array.from(map.values()).flat()
-    for (let i = values.length - 1; i >= 0; i--) {
+    const length2 = values.length
+    for (let i = 0; i < length2; i++) {
       const e = values[i], id = e[idKey], pid = e[parentKey]
       e[childrenKey] = map.get(id) // 赋值children
       if (!ids.includes(pid)) // 只返回最上级
-        o.unshift(e)
+        o.push(e)
     }
     return o
   },
