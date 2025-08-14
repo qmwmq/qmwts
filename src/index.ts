@@ -2,7 +2,7 @@
 export { default as ArrayUtils } from './utils/array-utils'
 export { default as FinanceUtils } from './utils/finance-utils'
 export type { XIRREntity } from './utils/finance-utils'
-import AxiosUtils from './utils/axios-utils'
+import AxiosInstance from './utils/axios-instance'
 import Downloader from './utils/downloader'
 import Encryptor from './utils/encryptor'
 import NumberUtils from './utils/number-utils'
@@ -16,6 +16,7 @@ import LocalDateTime from './class/local-date-time'
 import YearMonth from './class/year-month'
 
 export {
+  AxiosInstance,
   Downloader,
   Encryptor,
   NumberUtils,
