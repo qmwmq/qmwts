@@ -32,4 +32,10 @@ export default {
     }
     return sum
   },
+  isBetween(a: number, min: number, max: number): boolean {
+    return a >= Math.min(min, max) && a <= Math.max(max, min)
+  },
+  isInside(a: number, min: number, max: number): boolean {
+    return a > Math.min(min, max) && a < Math.max(max, min)
+  }
 }
