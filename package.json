@@ -1,25 +1,24 @@
 {
   "name": "qmwts",
-  "version": "1.1.60",
+  "version": "1.1.61",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "vitest"
   },
   "author": "qmw",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
-    "typescript": "^5.8.3"
+    "axios": "^1.11.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "axios": "^1.11.0",
     "jszip": "^3.10.1"
   }
 }

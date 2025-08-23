@@ -29,6 +29,7 @@ export default {
       return <T[]>o
     return this.isArray(o) ? <T[]>JSON.parse(o) : <T[]>[]
   },
+  /* 迁移至object-utils，后续删除 */
   optionalChaining(o: any = {}, chain: string, substitute: any = ''): any {
     const chaining: string[] = chain.split('.')
     for (const key of chaining) {
@@ -42,6 +43,7 @@ export default {
       return substitute
     return o
   },
+  /* 迁移至object-utils，后续删除 */
   // 将一个object的值全部设为null，主要用于naive-ui
   setNull(o: any = {}, exclusions: any = []): void {
     for (const key in o)

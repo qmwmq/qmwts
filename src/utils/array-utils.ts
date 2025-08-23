@@ -1,3 +1,5 @@
+import ObjectUtils from './object-utils'
+
 export default {
   /**
    * 数组转化为树形结构
@@ -92,22 +94,22 @@ export default {
     return result
   },
   /**
-   * 根据数组中的某一属性去重
+   * 根据数组元素中的某一属性进行去重
    * @param array
    * @param keyName
-   * @param onDuplicate key重复是的行为，override=覆盖，ignore=忽略
+   * @param override 遇到重复元素是否覆盖
    */
   uniqueBy<T>(
-      array: any[] = [],
-      keyName: any = 'id',
-      onDuplicate: 'override' | 'ignore' = 'ignore',
+      array: T[] = [],
+      keyName: string,
+      override: boolean = false
   ): T[] {
-    const map = new Map()
+    const map = new Map<any, any>()
     const length = array.length
     for (let i = 0; i < length; i++) {
-      const e = array[i]
-      const key = e[keyName]
-      if (onDuplicate === 'ignore' && map.has(key))
+      const e: any = array[i]
+      const key: any = ObjectUtils.optionalChaining(e, keyName)
+      if (!override && map.has(key))
         continue
       map.set(key, e)
     }

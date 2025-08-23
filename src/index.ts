@@ -7,6 +7,7 @@ import Downloader from './utils/downloader'
 import Encryptor from './utils/encryptor'
 import NumberUtils from './utils/number-utils'
 import JsonUtils from './utils/json-utils'
+import ObjectUtils from './utils/object-utils'
 import PrototypeUtils from './utils/prototype-utils'
 import RequestDataGenerator from './utils/request-data-generator'
 import FileUtils from './utils/file-utils'
@@ -21,6 +22,7 @@ export {
   Encryptor,
   NumberUtils,
   JsonUtils,
+  ObjectUtils,
   PrototypeUtils,
   RequestDataGenerator,
   FileUtils,
