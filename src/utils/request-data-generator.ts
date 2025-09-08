@@ -4,7 +4,7 @@ export default {
       if (Array.isArray(value))
         for (const i of value)
           params.append(key, i)
-      else if (isValidValue(value))
+      else if (value != null)
         params.append(key, value as string)
     }
     return params

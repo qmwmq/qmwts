@@ -1,6 +1,6 @@
 export default {
   trimAll(str: any): string {
-    if ([ void 0, null ].includes(str))
+    if (str == null)
       return ''
     return String(str).split('').map(e => e.trim()).join('')
   },

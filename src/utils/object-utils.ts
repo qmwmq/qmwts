@@ -10,7 +10,7 @@ export default {
         o = ''
       }
     }
-    if ([ void 0, null ].includes(o))
+    if (o == null)
       return substitute
     return o
   },
