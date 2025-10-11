@@ -1,41 +1,59 @@
 export default {
   // 判断是否数字
-  ifNaN(number: any, substitute: any): any {
-    return this.isNumber(number) ? +number : substitute
+  ifNaN(value: any, substitute: any): any {
+    return this.isNumber(value) ? +value : substitute
   },
-  isNumber(...number: any[]): boolean {
-    for (let i = number.length - 1; i >= 0; i--) {
-      const e = String(number[i]).trim()
-      if (e === '' || !isFinite(+e) || isNaN(+e))
+  isNumber(...values: any[]): boolean {
+    for (let i = values.length - 1; i >= 0; i--) {
+      const e = String(values[i]).trim()
+      if (e === '' || !Number.isFinite(+e) || Number.isNaN(+e))
         return false
     }
     return true
   },
   // 增加千分位分隔符
-  thousandths(number: any, fixed: number = 2): string {
-    if (!this.isNumber(number))
+  thousandths(value: any, fixed: number = 2): string {
+    if (!this.isNumber(value))
       return ''
-    number = new Intl.NumberFormat('en-US', {
+    value = new Intl.NumberFormat('en-US', {
       minimumFractionDigits: fixed,
       maximumFractionDigits: fixed,
-    }).format(number)
-    if (+number === 0)// -0转为普通0
+    }).format(value)
+    if (+value === 0)// -0转为0
       return (0).toFixed(fixed)
-    return number
+    return value
   },
-  summation(array: any[] = []): number {
+  summation(...values: any[]): number {
     let sum = 0
-    for (let i = array.length - 1; i >= 0; i--) {
-      const e = +array[i]
+    const values0 = values.flat(Infinity)
+    for (let i = values0.length - 1; i >= 0; i--) {
+      const e = +values0[i]
       if (this.isNumber(e))
         sum += e
     }
     return sum
   },
-  isBetween(a: number, min: number, max: number): boolean {
-    return a >= Math.min(min, max) && a <= Math.max(max, min)
+  isBetween(value: number, min: number, max: number): boolean {
+    return value >= Math.min(min, max) && value <= Math.max(max, min)
   },
-  isInside(a: number, min: number, max: number): boolean {
-    return a > Math.min(min, max) && a < Math.max(max, min)
+  isInside(value: number, min: number, max: number): boolean {
+    return value > Math.min(min, max) && value < Math.max(max, min)
+  },
+  extractNumbers(value: any): string {
+    const v = String(value)
+    let result = ''
+    let hasDot = false
+    for (let i = 0; i < v.length; i++) {
+      const ch = v[i]
+      if (/[0-9]/.test(ch)) {
+        result += ch
+      } else if (ch === '-' && result === '') { // 负号只能在最前
+        result += ch
+      } else if (ch === '.' && !hasDot) { // 只能有一个小数点
+        result += ch
+        hasDot = true
+      }
+    }
+    return result
   }
 }
