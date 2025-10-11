@@ -10,7 +10,3 @@ export default {
     return params
   }
 }
-
-function isValidValue(value: any) {
-  return value !== null && value !== void 0
-}
