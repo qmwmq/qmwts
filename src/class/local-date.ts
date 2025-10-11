@@ -40,8 +40,24 @@ export default class LocalDate {
     return LocalDate.of(this.getYear(), this.getMonth(), this.getDayOfMonth() + days)
   }
 
+  plusMonths(months: number): LocalDate {
+    return LocalDate.of(this.getYear(), this.getMonth() + months, this.getDayOfMonth())
+  }
+
+  plusYears(years: number): LocalDate {
+    return LocalDate.of(this.getYear() + years, this.getMonth(), this.getDayOfMonth())
+  }
+
   minusDays(days: number): LocalDate {
     return this.plusDays(-days)
+  }
+
+  minusMonths(months: number): LocalDate {
+    return this.plusMonths(-months)
+  }
+
+  minusYears(years: number): LocalDate {
+    return this.plusYears(-years)
   }
 
   format(): string {
@@ -49,11 +65,10 @@ export default class LocalDate {
   }
 
   toString() {
-    return [
-      this.date.getFullYear().toString(),
-      (this.date.getMonth() + 1).toString().padStart(2, '0'),
-      this.date.getDate().toString().padStart(2, '0')
-    ].join('-')
+    const year = this.date.getFullYear()
+    const month = String(this.date.getMonth() + 1).padStart(2, '0')
+    const day = String(this.date.getDate()).padStart(2, '0')
+    return `${ year }-${ month }-${ day }`
   }
 
 }
