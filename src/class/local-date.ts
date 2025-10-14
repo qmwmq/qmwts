@@ -6,14 +6,18 @@ export default class LocalDate {
   constructor()
   constructor(date: Date)
   constructor(date?: Date) {
-    if (date == void 0)
-      this.date = new Date()
-    else
+    if (date instanceof Date)
       this.date = date
+    else
+      this.date = new Date()
   }
 
   static now(): LocalDate {
     return new LocalDate()
+  }
+
+  static parse(date: string | number): LocalDate {
+    return new LocalDate(new Date(date))
   }
 
   static of(year: number, month: number, date: number): LocalDate {
