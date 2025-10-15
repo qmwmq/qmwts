@@ -22,6 +22,6 @@
     "jszip": "^3.10.1"
   },
   "peerDependencies": {
-    "axios": "^1.11.0"
+    "axios": "^1.12.2"
   }
 }
