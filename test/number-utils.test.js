@@ -10,5 +10,6 @@ describe('test1', () => {
     expect(NumberUtils.summation(1, 2, 3, [ 1, 2, 3 ])).toBe(12)
     expect(NumberUtils.summation(1, '2', 3, [ '1', 2, 3 ])).toBe(12)
     expect(NumberUtils.summation(1, '2', 3, [ '1xx', 2, 3 ])).toBe(11)
+    expect(NumberUtils.isNumber('2021-01-01')).toBe(false)
   })
 })
