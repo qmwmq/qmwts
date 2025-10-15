@@ -16,8 +16,13 @@ export default class LocalDate {
     return new LocalDate()
   }
 
-  static parse(date: string | number): LocalDate {
-    return new LocalDate(new Date(date))
+  static parse(date: string | number | Date | null | undefined): LocalDate | null {
+    if (date == null)
+      return null
+    const d = date instanceof Date ? date : new Date(date)
+    if (Number.isNaN(d.getTime())) // 无效日期返回null
+      return null
+    return new LocalDate(d)
   }
 
   static of(year: number, month: number, date: number): LocalDate {
