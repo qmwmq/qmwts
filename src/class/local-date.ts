@@ -36,8 +36,12 @@ export default class LocalDate {
     return this.date.getDate()
   }
 
-  getDayOfWeek(): number {
-    return this.date.getDay() || 7
+  getDayOfWeek(): number { // 周日是0
+    return this.date.getDay()
+  }
+
+  getTime(): number {
+    return this.date.getTime()
   }
 
   plusDays(days: number): LocalDate {
