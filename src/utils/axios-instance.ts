@@ -11,8 +11,8 @@ import { RequestDataGenerator } from '../index'
 
 axios.interceptors.request.use(
     request => {
-      request.data = RequestDataGenerator.generate(request.data, new FormData())
-      request.params = RequestDataGenerator.generate(request.params, new URLSearchParams())
+      // request.data = RequestDataGenerator.generate(request.data, new FormData())
+      // request.params = RequestDataGenerator.generate(request.params, new URLSearchParams())
       return request
     },
     error => {
