@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { RequestDataGenerator } from '../index'
+import ParamBuilder from './param-builder'
 
 // post 默认application/json
 // post 使用URLSearchParams自动变为application/x-www-form-urlencoded;charset=UTF-8
@@ -13,8 +13,8 @@ const instance = axios.create({})
 
 instance.interceptors.request.use(
     request => {
-      request.data = RequestDataGenerator.generate(request.data, new FormData())
-      request.params = RequestDataGenerator.generate(request.params, new URLSearchParams())
+      request.data = ParamBuilder.buildData(request.data)
+      request.params = ParamBuilder.buildParams(request.params)
       return request
     },
     error => {
