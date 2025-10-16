@@ -9,10 +9,12 @@ import { RequestDataGenerator } from '../index'
 // get 使用URLSearchParams默认无
 // get 无法使用FormData
 
-axios.interceptors.request.use(
+const instance = axios.create({})
+
+instance.interceptors.request.use(
     request => {
-      // request.data = RequestDataGenerator.generate(request.data, new FormData())
-      // request.params = RequestDataGenerator.generate(request.params, new URLSearchParams())
+      request.data = RequestDataGenerator.generate(request.data, new FormData())
+      request.params = RequestDataGenerator.generate(request.params, new URLSearchParams())
       return request
     },
     error => {
@@ -20,7 +22,7 @@ axios.interceptors.request.use(
     }
 )
 
-axios.interceptors.response.use(
+instance.interceptors.response.use(
     async response => {
       if (response.config.responseType === 'blob') {
         const { data } = response
@@ -45,4 +47,4 @@ axios.interceptors.response.use(
     }
 )
 
-export default axios
+export default instance
