@@ -1,4 +1,5 @@
 import PrototypeUtils from './prototype-utils'
+import NumberUtils from './number-utils'
 
 export default {
   optionalChaining(o: any = {}, chain: string, substitute: any = ''): any {
@@ -36,5 +37,19 @@ export default {
       }
     }
     return data
+  },
+  // a是否包含b的全部属性
+  contains(a: Record<string, any> = {}, b: Record<string, any> = {}): boolean {
+    return Object.entries(b).every(([ key, valueB ]) => {
+      const valueA = a[key]
+      // 都是对象或数组 → 递归比较
+      if (PrototypeUtils.isObject(valueA) && PrototypeUtils.isObject(valueB))
+        return this.contains(valueA, valueB)
+      if (PrototypeUtils.isArray(valueA) && PrototypeUtils.isArray(valueB))
+        return this.contains(valueA, valueB)
+      if (NumberUtils.isNumber(valueA) && NumberUtils.isNumber(valueB)) // 字符串数字和纯数字全部转为数字进行对比 '1' === 1
+        return +valueA === +valueB
+      return valueA === valueB
+    })
   }
 }
