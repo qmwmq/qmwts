@@ -1,5 +1,5 @@
 export default {
-  build(data: any = {}, params: FormData | URLSearchParams) {
+  build<T extends FormData | URLSearchParams>(data: any = {}, params: T): T {
     for (const key in data) {
       if (Object.prototype.hasOwnProperty.call(data, key)) { // 只遍历自有属性，不要原型链上的属性
         const value = data[key]
@@ -15,10 +15,10 @@ export default {
     }
     return params
   },
-  buildParams(data: any = {}) {
-    return this.build(data, new URLSearchParams())
+  buildParams(data: any = {}): URLSearchParams {
+    return this.build<URLSearchParams>(data, new URLSearchParams())
   },
-  buildData(data: any = {}) {
-    return this.build(data, new FormData())
+  buildData(data: any = {}): FormData {
+    return this.build<FormData>(data, new FormData())
   },
 }
