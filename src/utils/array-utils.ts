@@ -114,5 +114,23 @@ export default {
       map.set(key, e)
     }
     return Array.from(map.values());
+  },
+  sort<T>(array: T[], order: 'asc' | 'desc', ...values: ((item: T) => number)[]): void {
+    if (!array || array.length === 0 || values.length === 0)
+      return
+
+    const multiplier = order === 'asc' ? 1 : -1
+
+    array.sort((a, b) => {
+      for (const fn of values) {
+        const valueA = fn(a)
+        const valueB = fn(b)
+
+        if (valueA !== valueB)
+          return (valueA - valueB) * multiplier
+
+      }
+      return 0
+    })
   }
 }
