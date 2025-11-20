@@ -126,7 +126,7 @@ export default {
         const valueA = fn(a)
         const valueB = fn(b)
 
-        if (valueA !== valueB)
+        if (valueA - valueB !== 0)
           return (valueA - valueB) * multiplier
 
       }
