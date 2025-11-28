@@ -18,8 +18,10 @@ export default {
     const ids = [] // 记录所有的id，parentId不在这个集合内则说明是最上级
     const length = array.length
     for (let i = 0; i < length; i++) {
-      const e = array[i], id = e[idKey], pid = e[parentKey]
-      const children = map.get(pid) || []
+      const e = array[i]
+      if (e == null) continue
+      const id = e[idKey], pid = e[parentKey]
+      const children = map.get(pid) ?? []
       children.push(e)
       map.set(pid, children)
       ids.push(id)
