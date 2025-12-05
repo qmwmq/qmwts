@@ -1,5 +1,3 @@
-import ObjectUtils from './object-utils'
-
 export default {
   /**
    * 数组转化为树形结构
@@ -18,8 +16,10 @@ export default {
     const ids = [] // 记录所有的id，parentId不在这个集合内则说明是最上级
     const length = array.length
     for (let i = 0; i < length; i++) {
-      const e = array[i], id = e[idKey], pid = e[parentKey]
-      const children = map.get(pid) || []
+      const e = array[i]
+      if (e == null) continue
+      const id = e[idKey], pid = e[parentKey]
+      const children = map.get(pid) ?? []
       children.push(e)
       map.set(pid, children)
       ids.push(id)
@@ -96,23 +96,41 @@ export default {
   /**
    * 根据数组元素中的某一属性进行去重
    * @param array
-   * @param keyName
+   * @param value 获取元素唯一标识的函数
    * @param override 遇到重复元素是否覆盖
    */
-  uniqueBy<T>(
+  uniqueBy<T, K = unknown>(
       array: T[] = [],
-      keyName: string,
+      value: (item: T) => K,
       override: boolean = false
   ): T[] {
-    const map = new Map<any, any>()
-    const length = array.length
-    for (let i = 0; i < length; i++) {
-      const e: any = array[i]
-      const key: any = ObjectUtils.optionalChaining(e, keyName)
-      if (!override && map.has(key))
-        continue
-      map.set(key, e)
+    array = array ?? []
+    const map = new Map<K, T>()
+    for (let i = 0; i < array.length; i++) {
+      const e: T = array[i]
+      if (e == null) continue
+      const key: K = value(e)
+      if (!map.has(key) || override)
+        map.set(key, e)
     }
-    return Array.from(map.values());
+    return Array.from(map.values())
+  },
+  sort<T>(array: T[], order: 'asc' | 'desc', ...values: ((item: T) => number)[]): void {
+    if (!array || array.length === 0 || values.length === 0)
+      return
+
+    const multiplier = order === 'asc' ? 1 : -1
+
+    array.sort((a, b) => {
+      for (const fn of values) {
+        const valueA = fn(a)
+        const valueB = fn(b)
+
+        if (valueA - valueB !== 0)
+          return (valueA - valueB) * multiplier
+
+      }
+      return 0
+    })
   }
 }
