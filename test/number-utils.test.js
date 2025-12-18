@@ -19,7 +19,7 @@ describe('test1', () => {
       { date: new Date('2025-12-09'), amount: -17080.56 },
       { date: new Date('2025-12-12'), amount: 19240.20 },
       { date: new Date('2025-12-16'), amount: -18354.76 },
-      { date: new Date('2025-12-17'), amount: 98079.08 },
+      { date: new Date('2025-12-18'), amount: 98357.84 },
     ]))
 
     expect(NumberUtils.summation(1, 2, 3)).toBe(6)
