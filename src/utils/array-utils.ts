@@ -132,5 +132,11 @@ export default {
       }
       return 0
     })
+  },
+  merge(
+      value: (item: any) => any,
+      ...arrays: any[]
+  ) {
+
   }
 }

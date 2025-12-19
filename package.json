@@ -19,7 +19,8 @@
     "dist"
   ],
   "dependencies": {
-    "jszip": "^3.10.1"
+    "jszip": "^3.10.1",
+    "lodash-es": "^4.17.22"
   },
   "peerDependencies": {
     "axios": "^1.12.2"
