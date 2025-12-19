@@ -1,3 +1,5 @@
+import { merge as _merge } from 'lodash-es'
+
 export default {
   /**
    * 数组转化为树形结构
@@ -99,7 +101,7 @@ export default {
    * @param value 获取元素唯一标识的函数
    * @param override 遇到重复元素是否覆盖
    */
-  uniqueBy<T, K = unknown>(
+  uniqueByKey<T, K = unknown>(
       array: T[] = [],
       value: (item: T) => K,
       override: boolean = false
@@ -133,10 +135,35 @@ export default {
       return 0
     })
   },
-  merge(
-      value: (item: any) => any,
-      ...arrays: any[]
-  ) {
-    console.log(123)
+  mergeByKey<T extends object>(
+      keyExtractor: (item: T) => string | number | symbol, // 限定key类型，避免非可哈希值
+      ...arrays: T[][]
+  ): T[] {
+    // 1. 空值防御：过滤空数组，避免无效遍历
+    const validArrays = arrays.filter(arr => Array.isArray(arr) && arr.length > 0)
+    if (validArrays.length === 0) return []
+
+    const mergeMap = new Map<string | number | symbol, T>()
+
+    // 2. 扁平化数组并遍历（仅处理有效数组，提升性能）
+    validArrays.flat().forEach(item => {
+      // 3. 空项防御：跳过undefined/null项
+      if (!item) return
+
+      const key = keyExtractor(item)
+      const existingItem = mergeMap.get(key)
+
+      if (existingItem) {
+        // 4. 深度合并：保留先插入的值（existingItem在前，item在后不覆盖）
+        // 使用lodash的merge，保证深度合并；空对象作为目标，避免修改原对象
+        mergeMap.set(key, _merge({}, existingItem, item) as T) // 元素在后的覆盖前面的
+      } else {
+        // 5. 首次插入：浅拷贝原对象，避免外部修改影响map内数据
+        mergeMap.set(key, { ...item })
+      }
+    })
+
+    // 6. 转换为数组返回
+    return Array.from(mergeMap.values())
   }
 }

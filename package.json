@@ -11,6 +11,7 @@
   "author": "qmw",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
     "axios": "*",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
