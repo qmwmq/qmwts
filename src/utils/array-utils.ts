@@ -137,6 +137,6 @@ export default {
       value: (item: any) => any,
       ...arrays: any[]
   ) {
-
+    console.log(123)
   }
 }
