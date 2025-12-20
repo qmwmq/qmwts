@@ -146,10 +146,11 @@ export default {
     const mergeMap = new Map<string | number | symbol, T>()
 
     // 2. 扁平化数组并遍历（仅处理有效数组，提升性能）
-    validArrays.flat().forEach(item => {
+    const arr = validArrays.flat()
+    for (let i = 0; i < arr.length; i++) {
+      const item = arr[i]
       // 3. 空项防御：跳过undefined/null项
-      if (!item) return
-
+      if (!item) continue
       const key = keyExtractor(item)
       const existingItem = mergeMap.get(key)
 
@@ -161,8 +162,7 @@ export default {
         // 5. 首次插入：浅拷贝原对象，避免外部修改影响map内数据
         mergeMap.set(key, { ...item })
       }
-    })
-
+    }
     // 6. 转换为数组返回
     return Array.from(mergeMap.values())
   }
