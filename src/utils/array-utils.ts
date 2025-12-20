@@ -117,7 +117,7 @@ export default {
     }
     return Array.from(map.values())
   },
-  sort<T>(array: T[], order: 'asc' | 'desc', ...values: ((item: T) => number)[]): void {
+  sort<T>(array: T[], order: 'asc' | 'desc', ...values: ((item: T) => any)[]): void {
     if (!array || array.length === 0 || values.length === 0)
       return
 
@@ -127,6 +127,9 @@ export default {
       for (const fn of values) {
         const valueA = fn(a)
         const valueB = fn(b)
+
+        if (typeof valueA === 'string' && typeof valueB === 'string')
+          return valueA.localeCompare(valueB) * multiplier
 
         if (valueA - valueB !== 0)
           return (valueA - valueB) * multiplier
