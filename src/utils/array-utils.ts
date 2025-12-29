@@ -1,4 +1,5 @@
 import { merge as _merge } from 'lodash-es'
+import NumberUtils from './number-utils'
 
 export default {
   /**
@@ -128,12 +129,14 @@ export default {
         const valueA = fn(a)
         const valueB = fn(b)
 
-        if (typeof valueA === 'string' && typeof valueB === 'string')
-          return valueA.localeCompare(valueB) * multiplier
-
-        if (valueA - valueB !== 0)
-          return (valueA - valueB) * multiplier
-
+        let result = 0
+        if (NumberUtils.isNumber(valueA) && NumberUtils.isNumber(valueB)) {
+          result = valueA - valueB
+        } else {
+          result = String(valueA).localeCompare(String(valueB))
+        }
+        if (result !== 0)
+          return result * multiplier
       }
       return 0
     })
