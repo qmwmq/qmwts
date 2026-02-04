@@ -26,5 +26,8 @@ export default {
   isString(o: any): boolean {
     return this.is(o, 'String')
   },
+  isFormData(o: any): boolean {
+    return this.is(o, 'FormData')
+  },
 }
 
