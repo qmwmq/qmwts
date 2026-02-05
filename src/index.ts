@@ -11,10 +11,12 @@ export { default as NumberUtils } from './utils/number-utils'
 export { default as JsonUtils } from './utils/json-utils'
 export { default as ObjectUtils } from './utils/object-utils'
 export { default as PrototypeUtils } from './utils/prototype-utils'
-export { default as ParamBuilder  } from './utils/param-builder'
+export { default as ParamBuilder } from './utils/param-builder'
 export { default as FileUtils } from './utils/file-utils'
 export { default as StringUtils } from './utils/string-utils'
 
 export { default as LocalDate } from './class/local-date'
 export { default as LocalDateTime } from './class/local-date-time'
 export { default as YearMonth } from './class/year-month'
+
+export { sha256Hex } from './utils/digest-utils'
