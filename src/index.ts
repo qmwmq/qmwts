@@ -20,3 +20,7 @@ export { default as LocalDateTime } from './class/local-date-time'
 export { default as YearMonth } from './class/year-month'
 
 export { sha256Hex } from './utils/digest-utils'
+import NumberUtils from './utils/number-utils'
+
+export const { thousandths } = NumberUtils
+
