@@ -52,8 +52,8 @@ export default {
   ): T[] {
     // 建立 id - item 的映射
     const idMap = new Map()
-    for (let i = array.length - 1; i >= 0; i--) {
-      const e = array[i], { [idKey]: itemId } = e
+    for (const e of array) {
+      const { [idKey]: itemId } = e
       idMap.set(itemId, e)
     }
     const result: T[] = []
@@ -85,8 +85,8 @@ export default {
   ): T[] {
     const result: T[] = []
     const dfs = (currentId: any) => {
-      for (let i = array.length - 1; i >= 0; i--) {
-        const e = array[i], itemId = e[idKey], pid = e[parentKey]
+      for (const e of array) {
+        const { [idKey]: itemId, [parentKey]: pid } = e
         if (pid === currentId) {
           result.unshift(e)
           dfs(itemId)
