@@ -21,4 +21,3 @@ export { default as YearMonth } from './class/year-month'
 
 export { sha256Hex } from './utils/digest-utils'
 export { isNumber, thousandths, summation } from './utils/number-utils2'
-export { findTreeNodes } from './utils/array-utils2'
