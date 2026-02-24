@@ -73,6 +73,10 @@ export default class LocalDate {
     return this.plusYears(-years)
   }
 
+  withDayOfMonth(dayOfMonth: number): LocalDate {
+    return LocalDate.of(this.getYear(), this.getMonth(), dayOfMonth)
+  }
+
   format(): string {
     return this.toString()
   }
