@@ -10,6 +10,7 @@ export default class LocalDate {
       this.date = date
     else
       this.date = new Date()
+    this.date.setHours(0, 0, 0, 0) // 设定为0，否则使用time对比会出错
   }
 
   static now(): LocalDate {
