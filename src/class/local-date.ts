@@ -77,6 +77,14 @@ export default class LocalDate {
     return LocalDate.of(this.getYear(), this.getMonth(), dayOfMonth)
   }
 
+  isAfter(d: LocalDate): boolean {
+    return this.getTime() > d.getTime()
+  }
+
+  isBefore(d: LocalDate): boolean {
+    return this.getTime() < d.getTime()
+  }
+
   format(): string {
     return this.toString()
   }
