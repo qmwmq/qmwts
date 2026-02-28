@@ -1,11 +1,12 @@
 // https://juejin.cn/post/7098891689955164168
-export default class LocalDate {
+import LocalDateTime from './local-date-time'
 
-  private readonly date!: Date
+export default class LocalDate extends LocalDateTime{
 
   constructor()
   constructor(date: Date)
   constructor(date?: Date) {
+    super(date)
     if (date instanceof Date)
       this.date = date
     else
