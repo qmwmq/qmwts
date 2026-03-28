@@ -24,6 +24,11 @@ export const formatDateTime = (date: any): string => {
   return date ? date.toFormat('yyyy-MM-dd HH:mm') : ''
 }
 
+export const formatDate = (date: any): string => {
+  date = parseDate(date)
+  return date ? date.toFormat('yyyy-MM-dd') : ''
+}
+
 export const parseDate = (date: any): DateTime | null => {
   let luxonDate: DateTime | undefined = void 0;
   if (date instanceof DateTime) luxonDate = date
