@@ -1,12 +1,16 @@
+import { createSHA256 } from 'hash-wasm'
+
 export const sha256Hex = async (file: File): Promise<string> => {
+  const hasher = await createSHA256()
+  const chunkSize = 2 * 1024 * 1024 // 2MB
 
-  // 1. 将文件读取为 ArrayBuffer
-  const arrayBuffer = await file.arrayBuffer()
+  let offset = 0
+  while (offset < file.size) {
+    const chunk = file.slice(offset, offset + chunkSize)
+    const buffer = await chunk.arrayBuffer()
+    hasher.update(new Uint8Array(buffer))
+    offset += chunkSize
+  }
 
-  // 2. 使用 SubtleCrypto 计算 SHA256 哈希
-  const hashBuffer = await window.crypto.subtle.digest('SHA-256', arrayBuffer)
-
-  // 3. 将 ArrayBuffer 转换为十六进制字符串（核心转换逻辑）
-  const hashArray = Array.from(new Uint8Array(hashBuffer))
-  return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('')
+  return hasher.digest('hex')
 }
