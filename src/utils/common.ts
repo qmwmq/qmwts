@@ -39,3 +39,11 @@ export const debounce = <T extends (...args: any[]) => any>(
     cancel: () => void
   }
 }
+
+export const defineEnum = <T extends Record<string, string>>(enumObj: T) => {
+  return Object.fromEntries(
+      Object.entries(enumObj).map(
+          ([ code, label ]) => [ code, { code, label } ]
+      )
+  ) as { [K in keyof T]: { code: K; label: T[K] } }
+}
